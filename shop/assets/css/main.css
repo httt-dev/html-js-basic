@@ -1,5 +1,6 @@
 .header{
-    height: 120px;
+    /* Su dung cong thuc de tinh ton cho tien thay vi set co ding la 120px*/
+    height: var(--header-height);
     background-image: linear-gradient(0,#fe6433,#F6412D);
 }
 
@@ -11,7 +12,8 @@
 .header__navbar-list{
     list-style: none;
     padding-left: 0;
-    margin-top: 4px;
+    /* Sua loi noi dung khong can chinh o giua theo chieu doc cua navbar */
+    margin-top: 4px 0 0 0;
 }
 
 .header__navbar-item {
@@ -403,4 +405,220 @@
 
 .auth-form__help--forgot{
     color: var(--primary-color);
+}
+
+/* Header  */
+.header-with-search{
+    display: flex;
+    align-items: center;
+    height: calc(var(--header-height) - var(--navbar-height));
+    margin: 0 8px;
+}
+
+.header__logo{
+    width: 200px;
+}
+
+.header__logo-img{
+    width: 150px;
+    
+}
+
+.header__search{
+    background-color: var(--white-color);
+    height: 40px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    
+}
+
+.header__cart{
+    
+    width: 150px;
+    text-align: center;
+}
+.header__cart-icon {
+    font-size: 2.4rem;
+    color:var(--white-color);
+    margin-top: 2px;
+}
+.header__search-input-wrap{
+    /* De cho kich thuoc cua input chiem phan con lai */
+    flex: 1;
+    /* Dieu chinh de input text nam giua theo chieu doc */
+    height: 100%;
+
+    position: relative;
+}
+
+.header__search-input{
+    /* flex: 1; */
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding:0 16px;
+    border-radius: 2px;
+}
+
+.header__search-select{
+    border-left: 1px solid #ccc;
+    padding-left: 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+.header__search-select-label{
+    font-size: 1.4rem;
+    color:var(--text-color);
+}
+.header__search-select-icon{
+    color:#c0bbbb;
+    margin: 0 16px 0 8px;
+    /*De co the chinh cho icon o giua theo chieu cao 
+    thi set position thanh relative và top là npx*/
+    position: relative;
+    top:1px;
+}
+
+.header__search-btn{
+    background-color: #FA5433;
+    border: none;
+    outline: none;
+    height: 34px;
+    width: 60px;
+    font-size: 1.4rem;
+    color: var(--white-color);
+    margin-right: 3px;
+    border-radius: 2px;
+    outline: none;
+}
+.header__search-btn:hover{
+    background-color: #fe6433;
+    cursor: pointer;
+}
+
+.header__search-btn-icon{
+
+}
+
+.header__search-select:hover .header__search-option{
+    display: block;
+}
+
+.header__search-option{
+    position: absolute;
+    right:0;
+    width: 130px;
+    box-shadow: 0 1px 2px #e0e0e0;
+    padding:0;
+    top: 110%;
+    border-radius: 2px;
+    /* overflow: hidden; */
+    list-style-type: none;
+    display: none;
+    animation: fadeIn ease-in 0.2s ;
+
+}
+
+.header__search-option::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 12px;
+    position: absolute;
+    top:-10px;
+    left: 0;
+}
+.header__search-option-item{
+    background-color: var(--white-color);
+    padding: 8px 8px;
+    
+}
+
+.header__search-option-item:first-child{
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.header__search-option-item:last-child{
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+
+.header__search-option-item:hover{
+    background-color: #f3f3f3;
+    cursor: pointer;
+}
+
+.header__search-option-item span{
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-left: 8px;
+}
+
+.header__search-option-item i{
+    font-size: 1rem;
+    color:var(--primary-color);
+    margin: 0 0 0 10px;
+    display: none;
+}
+
+.header__search-option-item--active i{
+    display: inline-block;
+}
+
+.header__search-input:focus ~ .header__search-history{
+    display: block;
+}
+/* header search history */
+.header__search-history{
+    position: absolute;
+    top:calc(100% + 2px);
+    left:0;
+    width: calc(100% - 16px);
+    background-color: var(--white-color);
+    border-radius: 2px;
+    box-shadow: 0 1px 5px#999;
+    display: none;
+}
+.header__search-history-heading{
+    margin: 6px 12px ;
+    font-size: 1.4rem;
+    color: #999;
+    font-weight: 400;
+
+}
+
+.header__search-history-list{
+    padding-left: 0;
+    list-style: none;
+    margin: 6px 0 0 ;
+
+}
+.header__search-history-item:last-child{
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.header__search-history-item{
+    height: 38px;
+    padding: 0 12px;
+}
+
+.header__search-history-item a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color:var(--text-color);
+    /* De canh giua theo chieu cao cho line-height bang voi height cua item*/
+    line-height: 38px;
+    display: block;
+}
+
+.header__search-history-item:hover{
+    background-color: #fafafa;
 }
