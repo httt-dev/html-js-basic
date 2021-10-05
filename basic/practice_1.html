@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+</head>
+<body>
+    <h1>Thực hành DOM</h1>
+    <p>
+        Hey, you're not permitted in there. It's restricted. You'll be deactivated for sure.. Don't call me a mindless
+        philosopher, you overweight glob of grease! Now come out before somebody sees you. Secret mission? What plans?
+        What are you talking about? I'm not getting in there! I'm going to regret this. There goes another one. Hold
+        your fire. There are no life forms. It must have been short-circuited. That's funny, the damage doesn't look as
+        bad from out here. Are you sure this things safe?
+
+        What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's
+        got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll
+        hurry aboard we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship!
+        Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel.
+
+        Run, Luke! Run!
+    </p>
+
+    <script>
+        // Bài 1: Highlight tất cả các từ có độ dài lớn hơn hoặc bằng 8 ký tự trong đoạn văn (background = "yellow")
+            const para = document.querySelector("p");
+            para.innerHTML= para.innerText.split(" ").map(p => p.length>=8 ? `<span style="background-color:yellow">${p}</span>` : p).join(" ");
+        // bài 2: Thêm link hiển thị text "facebook" link đến trang facebook.com ở sau thẻ p
+            let fbLink = document.createElement("a");
+            fbLink.href ="https://facebook.com";
+            fbLink.innerText ="facebook";
+            fbLink.target = "_blank";
+            //them vao sau the p
+            document.body.appendChild(fbLink);
+
+        // bài 3. Đếm số từ có trong đoạn văn. Tạo 1 thẻ div để hiển thị số từ
+            //dem so tu co trong doan van 
+            const wordCount = para.innerText.split(" ").length;
+
+            //tao the div de hien thi so tu o tren dau truoc the p 
+            
+            const divWordCount = document.createElement("div");
+            divWordCount.innerText = wordCount;
+            document.body.insertBefore(divWordCount, para);
+        // Bài 4: thay thế ? => 🤔, ! => 😲
+            //tim cac ky tu ? , ! su dung regular expression 
+            para.innerText= para.innerText.replace(/\?/g,"🤔").replace(/\!/g,"😲");
+            
+
+    </script>
+</body>
+</html>

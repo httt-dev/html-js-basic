@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+    </ul>
+
+    <script>
+    
+    // Sử dụng javascript để thực hiện những công việc sau
+        const ulElement = document.getElementById("list");
+    // 1. Thêm 3 thẻ <li> có nội dung Item 8, Item 9, Item 10 vào cuối danh sách
+        for(let i = 8 ; i<=10 ; i++){
+            const itemLi = document.createElement("li");
+            itemLi.innerText = `Item ${i}`;
+            ulElement.appendChild(itemLi);
+        }
+    // 2. Sửa nội dung cho thẻ <li> 1 thành màu đỏ (color)
+        //Do the li khong co id hoac class nen se dung nth-chilh de xac dinh vi tri theo ul
+        document.querySelector("#list li:nth-child(1)").style.color='red';
+        
+    // 3. Sửa background cho thẻ <li> 3 thành màu xanh (background-color)
+        document.querySelector("#list li:nth-child(3)").style.backgroundColor = "green";
+        
+    // 4. Remove thẻ <li> 4
+        const li_4th = document.querySelector("#list li:nth-child(4)");
+        if(li_4th){
+            ulElement.removeChild(li_4th);
+        }
+    // 5. Thêm thẻ <li> mới thay thế cho thẻ <li> 4 bị xóa ở bước trước, thẻ <li> mới có nội dung bất kỳ
+        const newLi = document.createElement("li");
+        newLi.innerText ="Item New";
+        //add them vao vi tri truoc the Item 5
+        //Tim item 5 
+        const item5 = document.querySelector("#list li:nth-child(4)");
+        
+        ulElement.insertBefore(newLi, item5);
+        
+    // 6. Thêm 1 nút "add" + 1 ô input để nhập text. 
+    // Mỗi khi bấm nút thêm 1 thẻ <li> có nội dung là nội dung trong ô input vào cuối danh sách
+        //add them textbox input vao cuoi 
+        const textInput = document.createElement("input");
+        //textInput.placeholder ="Input Item";
+        textInput.setAttribute("placeholder" ,"Input Item");
+        document.body.appendChild(textInput);
+        
+        const btnInput = document.createElement("button");
+        btnInput.innerText = "Add";
+        document.body.appendChild(btnInput);
+        //them su kien xu ly cho button
+        btnInput.addEventListener('click' , function(){
+            if(textInput.value!=""){
+                const addItem  = document.createElement("li");
+                addItem.innerText = textInput.value;
+
+                ulElement.appendChild(addItem);
+                textInput.value ="";
+            }
+        });
+    // 7. Thêm 1 nút "remove". Chức năng để xóa thẻ <li> cuối cùng của danh sách
+        const btnRemove = document.createElement("button");
+        btnRemove.innerText ="Remove";
+        document.body.appendChild(btnRemove);
+        btnRemove.addEventListener("click", ()=>{
+            //tim phan tu cuoi cung cua list 
+            const lastItem= document.querySelector("#list li:last-child");
+            if(lastItem){
+                ulElement.removeChild(lastItem);
+            }
+        })
+    // 8. Thêm 1 nút "Hide" trên đầu của danh sách <ul>. 
+    // Khi bấm vào "Hide" thì <ul> sẽ ẩn. Đồng thời label của nút "Hide" => "Show"
+    // Và ngược lại Khi bấm vào "Show" thì <ul> sẽ hiện. Đồng thời label của nút "Show" => "Hide"
+        //khai bao button Hide 
+        const btnHide = document.createElement("button");
+        btnHide.innerText="Hide";
+
+        //them vao dau li 
+        document.body.insertBefore(btnHide, ulElement);
+        btnHide.addEventListener("click" , ()=>{
+            //check class xem co ton tai chua ? neu chua thi add them vao 
+            ulElement.classList.toggle("hide");
+            if(ulElement.classList.contains("hide")){
+                    btnHide.innerText="Show";
+            }else{
+                btnHide.innerText="Hide";
+            }
+            
+        });
+    //END
+    
+    </script>
+</body>
+</html>

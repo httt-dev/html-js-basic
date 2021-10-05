@@ -1,0 +1,135 @@
+:root{
+    --white-color:#fff;
+    --black-color:#000;
+    --text-color:#333;
+    --primary-color:#ee4d2d;
+    --border-color:#dbdbdb;
+}
+
+*{
+    box-sizing: inherit;
+}
+
+html{
+    /* font-size: 100%; tuong duong 16px */
+    font-size: 62.5%;
+    line-height: 1.6rem; /* ~ 16px==do cao cua chu*/
+    font-family: 'Roboto', sans-serif; /* chu khong co gach chan thi la sans-serif*/
+    box-sizing: border-box;
+}
+
+/* Dung cho resposive */
+
+.grid{
+    /* Neu width cua man hinh lon hon 1200px thi hien thi la 1200px, 
+    neu width cua man hinh nho hon 1200px thi se hien thi theo full cua man hinh do(100%
+    */
+    width:1200px;
+    max-width: 100%;
+    /* Canh giua cac item  */
+    margin: 0 auto;
+}
+
+.grid__full-width{
+    width:100%;
+}
+
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Animation hien len tu tu
+Doi tuong nao tren website ma su dung animation nay
+thi tu khi xuat hien no se co opacity la 0 va opacity se bang 1 khi ket thuc animation nay
+*/
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes growth {
+    from{
+        transform: scale(var(--growth-from));
+    }
+    to{
+        transform: scale(var(--growth-to));
+    }
+}
+
+/* Modal */
+.modal{
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+}
+
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.4);
+
+}
+
+.modal__body{
+    --growth-from:0.6;
+    --growth-to:1;
+    /* background-color:var(--white-color); */
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    /* border-radius: 4px; */
+    animation: growth linear 0.2s ;
+}
+
+/* button */
+.btn{
+    min-width: 142px;
+    height: 34px;
+    border: none;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* De can giua theo chieu doc text */
+    line-height: 1.6rem;
+}
+
+.btn.btn--normal:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--size-s {
+    height: 32px;
+    font-size: 1.2rem;
+    text-transform: none;
+    padding: 0 8px;
+
+}
+
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    
+}
+.btn.btn--disabled{
+    cursor:default;
+    /* filter: brightness(80%); */
+    background-color: #ccc;
+}

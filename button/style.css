@@ -1,0 +1,69 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Helvetica Neue";
+    background-color: #f4f4f5;
+}
+
+body>div{
+    margin: auto;
+}
+
+/* block and modifier*/
+
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding:12px 48px;
+    border-radius: 50px;
+    cursor: pointer;
+    min-width: 130px;
+    /* Tao ra keyframe de thay doi mau tu tu khi hover len nut 
+    thuoc tinh muon thay doi la opacity.Khi hover vao thi opacity
+     mac dinh của nút là 1 sẽ từ từ xuống còn 0.8
+    */
+    transition: opacity .2s ease;
+}
+
+.btn:hover{
+    opacity: 0.8;
+    
+}
+.btn--size-s{
+    padding: 8px 40px;
+
+}
+
+.btn--size-l{
+    padding: 20px 64px;
+}
+
+/* CSS cho btn o dang sau cua 1 .btn */
+.btn + .btn{
+    margin-left: 16px;
+}
+.btn--success{
+    background-color: #71be34;
+}
+.btn--warning{
+    background-color: #ffb702;
+}
+.btn--danger{
+    background-color: #ff623d;
+}
+
+.btn--disabled{
+    opacity: 0.5 !important;
+    cursor: default;
+}

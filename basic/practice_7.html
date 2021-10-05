@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh
+        }
+
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            width: 400px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-input {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .form-input button {
+            content: "";
+            position: absolute;
+            right: 10px;
+            top: 30px;
+            border: none;
+            background-color: transparent;
+
+        }
+
+        .form-input button:hover {
+            text-decoration: underline;
+            color: #3171E5;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            height: 36px;
+            line-height: 36px;
+            padding-left: 10px;
+            width: 100%;
+        }
+
+        #btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3171E5;
+            color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .error {
+            display: inline-block;
+            color: orangered;
+        }
+
+        .success {
+            border: 1px solid green;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .disable {
+            background-color: #ccc!important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Registration Form</h1>
+        <form id="registrationForm">
+            <div class="form-input">
+                <input id="username" type="text">
+            </div>
+            <div class="form-input">
+                <input id="password" type="password">
+                <button>Hiện</button>
+            </div>
+            <div class="form-input">
+                <input id="confirmPassword" type="password">
+                <button>Hiện</button>
+            </div>
+            <button type="submit" id="btn">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const btnRegister = document.getElementById("btn");
+        btnRegister.disabled=true; 
+        btnRegister.classList.add("disable");
+        //btnRegister.style.backgroundColor="#ccc";
+        // Bài 1: Thêm label cho các trường username, password, confirm password
+        const username = document.getElementById("username");
+        const usernameDiv = document.querySelector(".form-input:nth-child(1)");
+        const usernameLablel = document.createElement("label");
+        usernameLablel.innerText ="User Name";
+        usernameDiv.insertBefore(usernameLablel, username);
+
+        const password = document.getElementById("password");
+        const passwordDiv = document.querySelector(".form-input:nth-child(2)");
+        const passwordLablel = document.createElement("label");
+        passwordLablel.innerText ="Password";
+        passwordDiv.insertBefore(passwordLablel, password);
+
+        const confirmPassword = document.getElementById("confirmPassword");
+        const confirmPasswordDiv = document.querySelector(".form-input:nth-child(3)");
+        const confirmPasswordLablel = document.createElement("label");
+        confirmPasswordLablel.innerText ="Confirm Password";
+        confirmPasswordDiv.insertBefore(confirmPasswordLablel, confirmPassword);
+        
+
+        // Bài 2: Kiểm tra xem password và confirm pass có trùng nhau hay không
+        function IsPasswordValid(){
+            let result = false;
+            if(password.value=="" || confirmPassword.value==""){
+                return result;
+            }
+            if(password.value == confirmPassword.value){
+                return  true; 
+            }
+            return result;
+        }
+
+        // Bài 3: Đảm bảo nút ‘Đăng ký’ bị disable cho đến khi người dùng nhập dữ liệu hợp lệ vào tất cả các trường đầu vào. 
+        // Sau khi nhập đầy đủ thì ‘Đăng ký’ được enable.
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach(input => {
+            input.addEventListener("keyup" , function(){
+                var empty = false;
+
+                //console.log(this.value);
+                inputs.forEach(el => {
+                    if(el.value ==""){
+                        console.log(el);
+                        empty = true;
+                    }
+                });
+                console.log(empty);
+                if(empty || IsPasswordValid()==false){
+                    console.log("disable");
+
+                    //disable 
+                    if(!btnRegister.classList.contains("disable")){
+                        btnRegister.classList.add("disable");
+                        btnRegister.disabled=true; 
+
+                    }
+                    
+                }else{
+                    console.log("Enable");
+                    //enaled
+                    if(btnRegister.classList.contains("disable")){
+                        btnRegister.classList.remove("disable");
+                        btnRegister.disabled=false; 
+
+                    }                
+                }
+            });
+        });
+        // Bài 4: Khi user nhập đủ thông tin và bấm vào nút submit thì tạo 1 hộp thoại thông báo đăng ký thành công
+        btnRegister.addEventListener("click" , function(){
+            alert("Đăng ký thành viên");
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+.header{
+    height: 120px;
+    background-image: linear-gradient(0,#fe6433,#F6412D);
+}
+
+.header__navbar{
+    display: flex;
+    justify-content: space-between;
+
+}
+.header__navbar-list{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 4px;
+}
+
+.header__navbar-item {
+    margin:0 8px;
+    position: relative;
+    min-height: 26px;
+}
+
+.header__navbar-item--has-qr:hover .header__qr{
+    display: block;
+}   
+
+.header__navbar-item--has-notify:hover .header__notify{
+    display: block;
+}
+
+.header__navbar-item ,
+.header__navbar-item-link {
+    display: inline-block;
+    font-size: 1.5rem;
+    color:var(--white-color);
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.header__navbar-item ,
+.header__navbar-item-link ,
+.header__navbar-icon{
+    display: inline-flex;
+    align-items: center;
+}
+
+.header__navbar-item:hover,
+.header__navbar-icon-link:hover,
+.header__navbar-item-link:hover {
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+
+.header__navbar-item--strong{
+    font-weight: 400;
+}
+
+.header__navbar-item--separate::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 12px;
+    background-color: #FB9086;
+    top:0;
+    right:0;
+    /* chinh sua lai separate ra giua
+    Do magin cua itm la 8px nen ta chinh right thanh -8px la ok
+    */
+    right:-8px;
+    /* Chinh sua de nam giua theo chieu dung 
+    */
+    top:50%;
+    /* -50% có nghĩa là dịch chuyển theo phương đứng lên trên 50% kích thước chiều cao của chính nó 12px : 6px*/
+    transform: translateY(-50%);
+
+}
+
+.header__navbar-icon-link{
+    color:var(--white-color);
+    text-decoration: none;
+}
+
+.header__navbar-icon{
+    font-size:1.8rem;  
+    margin: 0 4px;
+}
+
+.header__navbar-title--no-pointer{
+    cursor: text;
+    /* Ghi de len hover => lam cho chu khong bi mo di khi hover chuot vao */
+    color: var(--white-color);
+}
+
+/* QR code */
+.header__qr{
+    background-color: var(--white-color);
+    width: 186px;
+    position: absolute;
+    left:0;
+    top:120%; /* full chieu cao cua the chua no , trong truong hop nay la the li*/
+    padding:8px;
+    border-radius: 2px;
+    display: none;
+    animation: fadeIn ease-in 0.5s;
+}
+/* Chen them phan tu de khi re chuot tu title xuong QR khong bi an QR giau chung */
+.header__qr::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    left:0;
+    top:-20px;
+
+}
+
+.header__qr-img{
+    width: 100%;
+}
+.header__qr-apps{
+    display: flex;
+    justify-content: space-between;
+
+}
+.header__qr-download-img{
+    height: 16px;
+}
+
+.header__qr-link:first-child{
+    margin-left: 11px;
+}
+
+.header__qr-link:last-child{
+    margin-right: 11px;
+}
+
+/* Header notification */
+
+.header__notify{    
+    position: absolute;
+    top:120%;
+    right:0;
+    
+    width: 404px;
+    background-color: var(--white-color);
+    border: 1px solid #d3d3d3;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    transform-origin: calc(100% - 20px) top;
+    animation: headerNotifyGrowth ease-in 0.25s;
+    /* De lam cho trinh duyet thuc hien animation tot hon */
+    will-change: opacity , transform;
+    display: none;
+}
+
+.header__notify::before{
+    content: "";
+    border: solid;
+    border-width: 20px 35px;
+    border-color: transparent transparent var(--white-color) transparent;
+    top:calc(-20px * 1.4 );
+    right: 0;
+    position: absolute;
+}
+
+.header__notify::after{
+    content: "";
+    position: absolute;
+    display: block;
+    top:-16px;
+    right:0;
+    width: 90px;
+    height: 20px;
+}
+
+@keyframes headerNotifyGrowth{
+    from{
+        opacity: 0;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header__notify-header{
+    height: 40px;
+    background-color: var(--white-color);
+}
+
+.header__notify-header h3{
+    /* loai bo margin do mac dinh the H3 co margin */
+    margin: 0 0 0 12px;
+    color:#999;
+    font-weight: 400;
+    font-size: 1.4rem;
+    /* de can giua chu thi chi can cho chieu cao cua dong bang chieu cao cua thang cha chua no header__notify-header*/
+    line-height: 40px;
+}
+.header__notify-list{
+    /* Do mac dinh padding-left cua the ul co gia tri khac 0 nen can lam cho no ve 0 */
+    padding-left: 0;
+
+}
+.header__notify-item{
+    /* Neu them the ben duoi thi the a se khong chiem 100% width 
+    trong truong hop do phai them width:100% cho the a
+    */
+    display: flex; 
+
+}
+.header__notify-item:hover{
+    background-color: #f7f7f7;
+}
+
+/* danh dau la da doc */
+.header__notify-item--viewed{
+    background-color: rgba(238, 75, 43, 0.1);
+}
+
+.header__notify-link{
+    /* Lam cho text nam tren cung hang voi hinh anh */
+    display: flex;
+    padding:12px;
+    text-decoration: none;
+    /* Neu header__notify-item khong dung display: flex thi khong can phai setting width */
+    width: 100%; 
+}
+
+.header__notify-img{
+    width: 48px;
+    /* Khac phu anh bi meo bang cach them the span vao de bao the img hoac cho object-fit la contain 
+    Nguyen nhan cua viec hinh bi meo la do nam trong the cha co display la flex nen mac dinh chieu 
+    cao cua img se bang voi chieu cao cua the a ( do khong set height cho the img)
+    */
+    object-fit: contain;
+}
+
+.header__notify-info{
+    margin-left: 12px;
+}
+.header__notify-name{
+    display: block;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 1.8rem;
+}
+.header__notify-description{
+    display: block;
+    font-size: 1.2rem;
+    color: #999;
+    line-height: 1.8rem;
+    margin-top: 4px;
+}
+
+.header__notify-footer{
+    display: flex;
+}
+
+.header__notify-footer-btn{
+    text-decoration: none;
+    color: var(--text-color);
+    padding:  8px 48px;
+    /* canh giua cho item trong flex*/
+    margin: auto;
+    font-weight: 400;
+}
+
+
+/* Authen form */
+
+.auth-form{
+    width: 500px;
+    border-radius: 4px;
+    background-color: var(--white-color);
+    /* De nhin thay goc bo tron o phia duoi */
+    overflow: hidden; 
+}
+
+.auth-form__container{
+    padding: 0 32px;
+}
+
+.auth-form__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin-top: 10px;
+}
+
+.auth-form__heading{
+    font-size: 2.2rem;
+    font-weight: 400;
+    color:var(--text-color);
+}
+.auth-form__switch-btn{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.auth-form__form{
+    /* margin-top: 16px; */
+}
+.auth-form__group{
+
+}
+
+.auth-form__input{
+    width: 100%;
+    height: 40px;
+    margin-top: 16px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    outline: none;
+}
+
+.auth-form__input:focus{
+    border-color: #888;
+}
+
+.auth-form__aside{
+    margin-top: 18px;
+}
+.auth-form__policy-text{
+    font-size:1.2rem ;
+    line-height: 1.8;
+    text-align: center;
+    padding: 0 12px;
+}
+.auth-form__text-link{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.auth-form__controls{
+    margin-top: 80px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.auth-form__controls-back{
+    margin-right: 8px;
+}
+
+.auth-form__socials{
+    padding:14px 36px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    margin-top: 22px;
+}
+
+.auth-form__socials--facebook{
+    color: var(--white-color);
+    background-color: #3a5a98;
+}
+
+.auth-form__socials-icon {
+    font-size: 1.8rem;
+    
+}
+
+.auth-form__socials--facebook
+.auth-form__socials-icon{
+    color: var(--white-color);
+}
+
+.auth-form__socials-title{
+    margin: 0 36px;
+}
+.auth-form__socials--google{
+    background-color: var(--white-color);
+}
+.auth-form__help{
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.auth-form__help-link{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #999;
+    outline: none;
+}
+
+.auth-form__help-separate{
+    display: block;
+    height: 22px;
+    margin: -2px 16px 0;
+    border-left: 1px solid var(--border-color);
+}
+
+.auth-form__help--forgot{
+    color: var(--primary-color);
+}

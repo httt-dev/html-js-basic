@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: "Roboto";
+            color: #696969;
+        }
+
+        .bg-dark {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mt-5 mb-5 text-uppercase">User Information Table</h1>
+            </div>
+        </div>
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Handle</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Samuel</td>
+                    <td>Johnson</td>
+                    <td>@samjohnson</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Sally</td>
+                    <td>Simpson</td>
+                    <td>@ssimpson</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Leona</td>
+                    <td>Dixon</td>
+                    <td>@ldixon</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Rosa</td>
+                    <td>Reed</td>
+                    <td>@rreed</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Enrique</td>
+                    <td>Jimenez</td>
+                    <td>@ejimenez</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        // Yêu cầu: Sử dụng Javascript để thực hiện các công việc sau
+        const table = document.querySelector(".table");
+
+        // 1. Thêm class "table-bordered" cho <table>
+            table.classList.add("table-bordered");
+
+        // 2. Thêm class "bg-dark" cho <tr> đầu tiên
+            table.querySelector("tr:first-child").classList.add("bg-dark");
+        // 3. Thêm 1 hàng mới trong table với nội dung như sau : 'Sean Reyes' (@sreyes)
+            const tr = document.createElement("tr");
+            const tdNo = document.createElement("td");
+            tdNo.innerText = table.querySelectorAll("tr").length;
+            tr.appendChild(tdNo);
+            
+            const tdFirst = document.createElement("td");
+            tdFirst.innerText = "Sean";
+            tr.appendChild(tdFirst);
+
+            const tdLast = document.createElement("td");
+            tdLast.innerText = "Reyes";
+            tr.appendChild(tdLast);
+
+            const tdHandle = document.createElement("td");
+            tdHandle.innerText = "@sreyes";
+            tr.appendChild(tdHandle);
+
+            table.appendChild(tr);
+
+        // 4. Cập nhật "Leona Dixon's handle" thành "@dixonl" (hàng 3 - cột Handle)
+            const leonaHandle= table.querySelector("tr:nth-child(4)>td:last-child") ;
+            leonaHandle.innerText ="@dixonl";
+        // 5. Di chuyển "Rosa Reed" lên đầu bảng và đảm bảo tất cả các mục nhập số trong cột đầu tiên được cập nhật tương ứng.
+
+            const rosaTr = table.querySelector("tr:nth-child(5)");
+            rosaTr.parentNode.removeChild(rosaTr);
+            const headerTr = table.querySelector("tr:first-child");
+            insertAfter(rosaTr, headerTr);
+            //danh lai so thu tu 
+            let no = 0;
+            table.querySelectorAll("tr:not(:first-child)>td:first-child").forEach(tr => {
+                tr.innerText = no+1;
+                no++;
+            });
+        // 6. Đổi chỗ 2 cột "First" và "Handle" cho nhau
+            swapColumn(1,3);
+            function swapColumn(colIndex1 , colIndex2 ){
+                const rows = document.querySelectorAll("tr");
+                console.log(rows);
+                for(const row of rows){
+                    const value1 = row.children[colIndex1].innerText;
+                    const value2 = row.children[colIndex2].innerText;
+                    row.children[colIndex2].innerText = value1;
+                    row.children[colIndex1].innerText = value2;
+
+                    //console.log(value1);
+                    //row.insertBefore(row.children[colIndex2],row.children[colIndex1] );
+                }
+            }
+        // 7. Các row có index là số lẻ ( trừ hàng tiêu đề cột )thì có background = "#f2f2f2"
+            no = 1;
+            table.querySelectorAll("tr:not(:first-child)").forEach(tr => {
+
+                if(no%2!=0){
+                    tr.style.backgroundColor ="#f2f2f2";
+                }
+                
+                no++;
+            });
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+    </script>
+</body>
+
+</html>

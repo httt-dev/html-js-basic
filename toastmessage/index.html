@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Message Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa29Ua1BzNW9DWFc2a1dZV3B1U2ZSQlVnMkhkZ3xBQ3Jtc0ttenJnT3NEN0YxTDI1OWZ6NnJaOExtaWhjeU8wZ21KckxFVTV1bzlsM3FFenVGYnhMWE5PS0IzUG9XOUNkdDB2cV8xVDgtRDVOOWx5cERLNUxtUnhfUWl3QjdHU3BJTlJWam5qOTAyT0t0RlhtOHZwaw&q=https%3A%2F%2Fdribbble.com%2Fshots%2F4580930-Toast-Messages%2Fattachments%2F4580930-Toast-Messages%3Fmode%3Dmedia-->
+    <h1>TOAST MESSAGE DEMO</h1>
+    <div id="toast">
+        <!-- Toast content insert here-->
+    </div>
+    
+    <div class="toast-action">
+        <!-- Success -->
+        <div onclick="showToast('Title' , 'Meesage confirm', 'success',5000)" class="btn btn--success">Show success toast</div>
+        <div onclick="showToast('Title' , 'Meesage confirm', 'info',3000)" class="btn btn--info">Show info toast</div>
+        <div onclick="showToast('Title' , 'Meesage confirm', 'warning',3000)" class="btn btn--warning">Show warning toast</div>
+        <div onclick="showToast('Title' , 'Meesage confirm', 'error',3000)" class="btn btn--danger">Show error toast</div>
+        
+        <!-- Info -->
+        <!-- <div class="toast toast--info">
+            <div class="toast__icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <div class="toast__body">
+                <h3 class="toast__title">Info</h3>
+                <p class="toast__msg">Message</p>
+            </div>
+
+            <div class="toast__close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="toast toast--warning">
+            <div class="toast__icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <div class="toast__body">
+                <h3 class="toast__title">Warning</h3>
+                <p class="toast__msg">Message</p>
+            </div>
+
+            <div class="toast__close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="toast  toast--error">
+            <div class="toast__icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <div class="toast__body">
+                <h3 class="toast__title">Error</h3>
+                <p class="toast__msg">Message</p>
+            </div>
+            
+            <div class="toast__close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>  -->
+        
+    </div>
+    <script>
+        
+        function toast({
+            title="",
+            message="",
+            type="info",
+            duration=3000
+        }){
+            const main = document.querySelector("#toast");
+            if(main){
+                const toast = document.createElement("div");
+                //auto remove toast component
+                const autoRemoveToastId=setTimeout(function(){
+                    main.removeChild(toast);
+                },duration + 1000); //cong them thoi gian bien mat 0.1s
+                //remove toast when click to x button
+                toast.onclick= function(e){
+
+                    //tim the co class bang "toast__close" , neu khong co thi tim thang cha(parent) cua no
+                    if(e.target.closest(".toast__close")){
+                        main.removeChild(toast);
+                        clearTimeout(autoRemoveToastId);//neu ma dong bang tay thi cung phai clear timeout ma da setting tu dong
+                    }
+                }
+
+                toast.classList.add("toast",`toast--${type}`);
+                const delay= (duration/1000).toFixed(0);
+                toast.style.animation=`slideFromLeft ease 0.3s , fadeOut linear 1s ${delay}s forwards`;
+                const icons = {
+                    success:"fas fa-check-circle",
+                    info:"fas fa-info-circle",
+                    warning:"fas fa-exclamation-circle",
+                    error:"fas fa-exclamation-circle"
+                }
+                const icon = icons[type];
+                toast.innerHTML = `<div class="toast__icon">
+                                        <i class="${icon}"></i>
+                                    </div>
+
+                                    <div class="toast__body">
+                                        <h3 class="toast__title">${title}</h3>
+                                        <p class="toast__msg">${message}</p>
+                                    </div>
+
+                                    <div class="toast__close">
+                                        <i class="fas fa-times"></i>
+                                    </div>`;
+                main.appendChild(toast);   
+                
+            }
+        }
+
+        
+        
+        function showToast(title, msg , type, duration){
+            toast({
+                title:title,
+                message:msg,
+                type:type,
+                duration:duration
+            });
+        }
+    </script>
+</body>
+
+</html>
