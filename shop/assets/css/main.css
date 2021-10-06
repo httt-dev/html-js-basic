@@ -438,7 +438,13 @@
     
     width: 150px;
     text-align: center;
+    /* position: relative;  Bo di do da co add them wrap vao*/
 }
+
+.header__cart-wrap:hover .header__cart-list{
+    display: block;
+}
+
 .header__cart-icon {
     font-size: 2.4rem;
     color:var(--white-color);
@@ -621,4 +627,185 @@
 
 .header__search-history-item:hover{
     background-color: #fafafa;
+}
+
+/* cart header*/
+ .header__cart{
+    /* Da set o phia tren */
+    /* position: relative; */
+} 
+
+.header__cart-wrap{
+    position: relative;
+    display: inline-block;
+    padding:0 12px;
+    cursor: pointer;
+}
+
+.header__cart-icon{
+    font-size:2.4rem;
+    color: var(--white-color);
+    margin-top: 6px;
+}
+
+.header__cart-list{
+    position: absolute;
+    top:calc(100% + 6px);
+    right: 0px;
+    background-color: var(--white-color);
+    width: 400px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3.125rem 0 rgba(0,0,0,0.2);
+    animation: fadeIn ease-in 0.2s;
+    cursor: default;
+    /* display: none; */
+}
+
+.header__cart-list::after{
+    content:"";
+    position: absolute;
+    top:-26px;
+    right: 2px;
+    border-width:16px 20px;
+    border-style: solid;
+    border-color:  transparent transparent var(--white-color) transparent ;
+    cursor: pointer;
+}
+/* .name1 .name2: 
+  Selects all elements with name2 that is a descendant of an element with name1
+ */
+.header__cart-list--no-cart .header__cart-no-cart-img,
+.header__cart-list--no-cart .header__cart-list-no-cart-msg
+{ 
+    display: block;
+    /* Canh giua cho icon */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header__cart-no-cart-img{
+    width: 55%;
+    /*khong hien thi iamge neu nhu co san pham*/
+    display: none;
+}
+.header__cart-list--no-cart{
+    padding: 24px  0;
+}
+.header__cart-list-no-cart-msg{
+     /*khong hien thi iamge neu nhu co san pham*/
+    /* display: block; */
+    display: none;
+    font-size: 1.4rem;
+    margin-top: 14px;
+    color: var(--text-color);
+
+}
+
+.header__cart-badge{
+    position: absolute;
+    top:-4px;
+    right: -4px;
+    padding: 1px 7px;
+    background-color: var(--white-color);
+    color:var(--primary-color);
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    border-radius: 10px;
+    border: 2px solid #EE4D2D;
+
+}
+/* Cart item */
+.header__cart-heading{
+    text-align: left;
+    margin: 8px 0 8px 12px;
+    font-size: 1.4rem;
+    color: #999;
+    font-weight:400 ;
+}
+
+.header__cart-list-item{
+    /* mac dinh the ul co padding left nen can cho no ve 0 */
+    padding-left: 0;
+    list-style: none;
+}
+
+.header__cart-item{
+    display: flex;
+    align-items: center;
+}
+
+.header__cart-item:hover{
+    background-color: #f8f8f8;
+}
+.header__cart-img{
+    width: 42px;
+    height: 42px;
+    /* object-fit: contain; */
+    margin: 12px;
+    border: 1px solid #E8E8E8;
+}
+.header__cart-item-info{
+    width: 100%;
+    margin-right: 12px; /* cho giong voi left cung 12px*/
+}
+.header__cart-item-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__cart-item-name{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-color);
+    /* Mac dinh the h co margin kha nhieu nen phai set ve 0 */
+    margin: 0;
+}
+.header__cart-item-price-wrap{
+
+}
+
+.header__cart-item-price{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+.header__cart-item-multile{
+    font-size: 0.9rem;
+    margin: 0 4px;
+    color: #757575;
+}
+.header__cart-item-quantity{
+    font-size: 1.2rem;
+    color: #757575;
+}
+.header__cart-item-body{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+}
+.header__cart-item-desciption{
+    font-size: 1.2rem;
+    color: #757575;
+    font-weight: 400;
+
+}
+.header__cart-item-remove{
+    font-size: 1.4rem;
+    color:var(--text-color);
+    
+}
+
+.header__cart-item-remove:hover{
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.header__cart-view-cart {
+    float: right;
+    margin:0 12px 12px 0;
+    text-transform: capitalize;
+}
+
+.header__cart-view-cart:hover{
+    background-color: #FB9086;
 }
