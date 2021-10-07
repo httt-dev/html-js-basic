@@ -14,12 +14,97 @@
     padding-left: 0;
     /* Sua loi noi dung khong can chinh o giua theo chieu doc cua navbar */
     margin-top: 4px 0 0 0;
+    /* Khi them thong tin user vao (img) thi dang bi lech theo chieu cao, them vao de fix  */
+    display: flex;
 }
 
 .header__navbar-item {
     margin:0 8px;
     position: relative;
     min-height: 26px;
+}
+
+.header__navbar-user{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header__navbar-user:hover .header__navbar-user-menu{
+    display: block;
+}
+
+.header__navbar-user-img{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.header__navbar-user-name{
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: 8px;
+
+}
+
+.header__navbar-user-menu{
+    position: absolute;
+    top:calc(100% + 4px);
+    right:0;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    width: 160px;
+    padding-left: 0px;
+    list-style: none;
+    z-index: 1;
+    box-shadow: 0 1px 2px #e0e0e0; 
+    display: none;
+}
+
+.header__navbar-user-menu::before{
+    content: "";
+    border-width: 20px 27px;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    right:4px;
+    top:-27px;
+    z-index: -1;
+}
+.header__navbar-user-menu::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top:-8px;
+    right:0;
+    width: 60%;
+    height: 10px;
+
+}
+.header__navbar-user-item{
+
+}
+
+.header__navbar-user-item a{
+    padding: 6px 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    
+}
+.header__navbar-user-item a:first-child{
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.header__navbar-user-item a:last-child{
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.header__navbar-user-item a:hover{
+    background-color: #fafafa ;
 }
 
 .header__navbar-item--has-qr:hover .header__qr{
@@ -658,7 +743,7 @@
     box-shadow: 0 1px 3.125rem 0 rgba(0,0,0,0.2);
     animation: fadeIn ease-in 0.2s;
     cursor: default;
-    /* display: none; */
+    display: none;
 }
 
 .header__cart-list::after{
