@@ -122,8 +122,8 @@ thi tu khi xuat hien no se co opacity la 0 va opacity se bang 1 khi ket thuc ani
     outline: none;
     cursor: pointer;
     color: var(--text-color);
-    background-color: transparent;
-    display: flex;
+    /* background-color: transparent; */
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     /* De can giua theo chieu doc text */
@@ -151,4 +151,52 @@ thi tu khi xuat hien no se co opacity la 0 va opacity se bang 1 khi ket thuc ani
     cursor:default;
     /* filter: brightness(80%); */
     background-color: #ccc;
+}
+
+/* select input*/
+.select-input{
+    position: relative;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-input:hover .select-input__list{
+    display: block;
+}
+
+.select-input__icon{
+    font-size: 1.4rem;
+    color: rgb(131,131,131);
+    position: relative;
+    top:1px;
+}
+
+.select-input__list{
+    position: absolute;
+    left:0;
+    right: 0;
+    top:25px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    padding: 8px 16px;
+    list-style: none;
+    display: none;
+}
+.select-input__link{
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+
+}
+
+.select-input__link:hover{
+    color: var(--primary-color);
 }
