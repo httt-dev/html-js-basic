@@ -44,7 +44,7 @@
 .header__navbar-user-name{
     font-size: 1.4rem;
     font-weight: 400;
-    margin-left: 8px;
+    margin-left: 4px;
 
 }
 
@@ -107,6 +107,10 @@
     background-color: #fafafa ;
 }
 
+.header__navbar-user-item--separate{
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
 .header__navbar-item--has-qr:hover .header__qr{
     display: block;
 }   
@@ -118,7 +122,7 @@
 .header__navbar-item ,
 .header__navbar-item-link {
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color:var(--white-color);
     text-decoration: none;
     font-weight: 300;
@@ -168,6 +172,9 @@
     text-decoration: none;
 }
 
+.header__navbar-icon-link:nth-child(2){
+    margin-left: 4px;
+}
 .header__navbar-icon{
     font-size:1.8rem;  
     margin: 0 4px;
@@ -227,21 +234,24 @@
 
 .header__notify{    
     position: absolute;
+    z-index: 1;
     top:120%;
     right:0;
     
     width: 404px;
     background-color: var(--white-color);
     border: 1px solid #d3d3d3;
+    border-radius: 2px;
     cursor: default;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    transform-origin: calc(100% - 20px) top;
+    transform-origin: calc(100% - 32px) top;
     animation: headerNotifyGrowth ease-in 0.25s;
     /* De lam cho trinh duyet thuc hien animation tot hon */
     will-change: opacity , transform;
     display: none;
+    
 }
 
 .header__notify::before{
@@ -509,6 +519,11 @@
     
 }
 
+.header__logo-link{
+    color: transparent;
+    text-decoration: none;
+}
+
 .header__search{
     background-color: var(--white-color);
     height: 40px;
@@ -607,7 +622,7 @@
     width: 130px;
     box-shadow: 0 1px 2px #e0e0e0;
     padding:0;
-    top: 110%;
+    top: 115%;
     border-radius: 2px;
     /* overflow: hidden; */
     list-style-type: none;
