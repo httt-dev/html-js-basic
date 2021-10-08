@@ -50,7 +50,7 @@
 
 .header__navbar-user-menu{
     position: absolute;
-    top:calc(100% + 4px);
+    top:calc(100% + 6px);
     right:0;
     background-color: var(--white-color);
     border-radius: 2px;
@@ -197,6 +197,8 @@
     border-radius: 2px;
     display: none;
     animation: fadeIn ease-in 0.5s;
+    z-index: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 /* Chen them phan tu de khi re chuot tu title xuong QR khong bi an QR giau chung */
 .header__qr::before{
@@ -628,7 +630,7 @@
     list-style-type: none;
     display: none;
     animation: fadeIn ease-in 0.2s ;
-
+    z-index: 1;
 }
 
 .header__search-option::after{
@@ -692,6 +694,7 @@
     border-radius: 2px;
     box-shadow: 0 1px 5px#999;
     display: none;
+    z-index: 1;
 }
 .header__search-history-heading{
     margin: 6px 12px ;
@@ -759,6 +762,7 @@
     animation: fadeIn ease-in 0.2s;
     cursor: default;
     display: none;
+    z-index: 1;
 }
 
 .header__cart-list::after{
@@ -827,6 +831,8 @@
     /* mac dinh the ul co padding left nen can cho no ve 0 */
     padding-left: 0;
     list-style: none;
+    height: 55vh;
+    overflow-y: auto;
 }
 
 .header__cart-item{
@@ -859,6 +865,16 @@
     color: var(--text-color);
     /* Mac dinh the h co margin kha nhieu nen phai set ve 0 */
     margin: 0;
+    /* fix bug : name qua dai thi chi gioi han 2 dong */
+    line-height: 2rem;
+    max-height: 4rem;
+    overflow: hidden;
+    flex: 1; /* Canh lai item trong flex cho canh trai */
+    padding-right: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: left;
 }
 .header__cart-item-price-wrap{
 
@@ -945,9 +961,26 @@
 }
 
 .category-item{
-
+    position: relative;
 
 }
+
+/* Bo duong line cua phan tu dau tien */
+.category-item:first-child::before{
+    display: none;
+}
+/* Ve line o phia tren cho cac danh muc */
+.category-item::before{
+    position: absolute;
+    content: "";
+    border-top: 1px solid #e1e1e1;
+    /* width: 100%; */
+    left: 16px;
+    right: 16px;
+    top:0;
+
+}
+
 .category-item--active .category-item__link{
     color: var(--primary-color) ;
 }
@@ -1059,8 +1092,7 @@
     background-color: var(--white-color);
     margin-top: 10px;
     position: relative;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-radius: 2px;
     box-shadow: 0 0.1rem 0.125rem 0 rgba(0,0,0,0.1);
     transition: transform ease-in 0.1s;
     will-change: transform;
@@ -1078,7 +1110,10 @@
     padding-top: 100%;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top center;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    
 }
 .home-product-item__name{
     font-size: 1.4rem;
@@ -1218,6 +1253,7 @@ i.home-product-item__like-icon-fill{
     height: 36px;
     background-color: rgba(255,216,64,0.92);
     text-align: center;
+    border-top-right-radius: 2px;
 }
 .home-product-item__sale-off::after{
     content: "";

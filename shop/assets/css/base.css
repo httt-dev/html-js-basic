@@ -196,6 +196,7 @@ thi tu khi xuat hien no se co opacity la 0 va opacity se bang 1 khi ket thuc ani
     padding: 8px 16px;
     list-style: none;
     display: none;
+    z-index: 1;
 }
 .select-input__link{
     font-size: 1.4rem;
