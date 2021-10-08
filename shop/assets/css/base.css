@@ -210,3 +210,42 @@ thi tu khi xuat hien no se co opacity la 0 va opacity se bang 1 khi ket thuc ani
 .select-input__link:hover{
     color: var(--primary-color);
 }
+
+/* Pagination */
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+.pagination-item{
+    margin: 0 14px;
+}
+
+.pagination-item--active .pagination-item__link{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item--active .pagination-item__link:hover{
+    background-color: #ed5c3f;
+}
+
+.pagination-item__link{
+    --height:30px;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #939393;
+    min-width: 40px;
+    height:var(--height);
+    display: block;
+    text-align: center;
+    /* canh giua theo chieu doc thi cho chieu cao 
+    line-height bang chieu cao cua o chua no */
+    line-height: var(--height);
+    border-radius: 2px;
+}
+.pagination-item__icon{
+
+}
