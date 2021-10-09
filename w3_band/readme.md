@@ -11,3 +11,8 @@ https://www.w3schools.com/w3css/tryw3css_templates_band.htm
         - Image
     4.Footer
 
+### Các câu hỏi cần trả lời
+    Vị trí của element
+    Kích thước element
+    Màu sắc element
+    Kiểu dáng ( font chữ , tròn , méo....)
