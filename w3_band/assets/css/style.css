@@ -23,6 +23,7 @@ html{
     top:0;
     left: 0;
     right: 0;
+    z-index: 1;
 }
 
 #nav{
@@ -111,9 +112,37 @@ html{
     dang bi troi len vi tri cua header => can them margin 
     top de chinh lai vi tri slider */
     margin-top: 46px;
+    /* Lam cho kich thuoc height cua hinh anh bang 1/2 
+    width cua anh . Padding-top (%) : 50% có nghĩa là 50% của width */
+    padding-top: 50%;
+    background:url('/w3_band/assets/img/chicago.jpeg') top center /cover no-repeat ;
+    position: relative;
+}
 
-    min-height: 900px;
-    background-color: #333;
+#slider .text-content{
+    position: absolute;
+    bottom: 48px;
+    color: #fff;
+    /* canh giua item : cach 1 dung tranform */
+    /* left: 50%;
+    transform: translateX(-50%);*/
+    text-align: center; 
+
+    /* canh giua text bang cach dieu chinh do rong thanh 100% */
+    /* width: 100%; */
+
+    /* hoac la cho left dinh vao sat ben trai , right dinh vao ben phai */
+    left:0;
+    right: 0;
+
+}
+#slider .text-heading{
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+#slider .text-description{
+    font-size: 15px;
 }
 
 #content{
