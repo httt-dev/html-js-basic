@@ -83,7 +83,25 @@ html{
     cursor: pointer;
 }
 
+/* Responsive */
+/* 
+    PC : width >= 1024px
+    Tablet : >=740px - <1024px
+    Mobile : <740px
+*/
+@media (min-width: 1024px) {
+    
+}
+
+@media (min-width: 740px) and (max-width: 1023px){
+
+}
+@media (max-width: 740px) {
+    
+}
+
 #main{
+
 }
 
 
@@ -228,9 +246,11 @@ html{
 
 #content .content-section{
     width: 800px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding:64px  0 112px;
+    /* them padding trai phai 16px de sua loi cho tablet */
+    padding:64px  16px 112px;
 }
 
 #content .section-heading{
