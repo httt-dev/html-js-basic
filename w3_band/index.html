@@ -103,9 +103,8 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus at magnam, culpa nostrum suscipit beatae ipsum, dolorem eius optio ea maxime? Dolores odio eligendi quibusdam nesciunt sequi facere, ipsa distinctio?</p>
-                                <a href="" class="place-buy-btn">Buy Ticket</a>
+                                <button  class="place-buy-btn js-buy-ticket">Buy Ticket</button>
                             </div>
-                                                    <div class="clear"></div>
 
                         </div>
     
@@ -115,7 +114,7 @@
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="" class="place-buy-btn">Buy Ticket</a>
+                                <button  class="place-buy-btn js-buy-ticket">Buy Ticket</button>
                             </div>
                         </div>
     
@@ -125,7 +124,7 @@
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus at magnam, culpa nostrum suscipit beatae ipsum, dolorem eius optio ea maxime? Dolores odio eligendi quibusdam nesciunt sequi facere, ipsa distinctio?</p>
-                                <a href="" class="place-buy-btn">Buy Ticket</a>
+                                <button  class="place-buy-btn js-buy-ticket">Buy Ticket</button>
                             </div>
                         </div>
     
@@ -149,5 +148,75 @@
         </div>
         
     </div>
+    <!-- Modal -->
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+            <header class="modal-header">
+                <i class="modal-heading-icon ti-bag"></i>
+                Tickets
+            </header>
+            <div class="modal-body">
+                <label for="ticket-quantity" class="modal-label">
+                    <i class="ti-shopping-cart"></i>
+                    Tickets, $15 per person
+                </label>
+                <input type="text" id="ticket-quantity" class="modal-input" placeholder="How many?">
+                
+                <label for="ticket-email" class="modal-label">
+                    <i class="ti-user"></i>
+                    Send To
+                </label>
+                <input type="email" id="ticket-email" class="modal-input" placeholder="Enter email">
+
+                <button id="buy-tickets">
+                    PAY
+                <i class="ti-check"></i>
+                </button>
+
+            </div>
+            <footer class="modal-footer">
+                <p class="modal-help">
+                    Need 
+                    <a href="#">help?</a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        const buy_tickets=document.querySelectorAll(".js-buy-ticket");
+        const modal = document.querySelector('.js-modal');
+        const modal_container = document.querySelector('.js-modal-container');
+
+        for(const buy_ticket of buy_tickets){
+            buy_ticket.addEventListener("click" , function(e){
+                if(modal){
+                    modal.classList.add("open");
+                }
+            });
+        }
+
+        const modal_close = document.querySelector('.js-modal-close');
+        modal_close.addEventListener('click' , function(e){
+            if(modal){
+                modal.classList.remove("open");
+            }
+        });
+
+        modal_container.addEventListener('click' , function(e){
+            e.stopPropagation();
+        });
+
+        modal.addEventListener('click', function(e){
+            if(modal){
+                modal.classList.remove("open");
+            }
+        });
+    </script>
 </body>
+
 </html>

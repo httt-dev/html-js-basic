@@ -317,3 +317,110 @@ html{
 #footer{
 
 }
+
+.modal{
+    /* Tao background de hinh thanh lop overlay */
+    position: fixed;
+    top:0;
+    right:0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.3);
+
+    /* display: flex;  do init bang khong hien thi nen khong dung cai nay*/
+    align-items: center;
+    justify-content: center;
+    display: none;
+    
+}
+@keyframes modalFadeIn{
+    from {
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal.open{
+    display: flex;
+}
+
+.modal-container{
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 300px;
+    background-color: #fff;
+    position: relative;
+    animation: modalFadeIn ease-in 0.5s;
+}
+
+
+.modal-header{
+    background-color: #009688;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 130px;
+    color: #fff;
+}
+
+.modal-heading-icon{
+    margin-right: 16px;
+}
+
+.modal-close{
+    position: absolute;
+    top:0;
+    right: 0;
+    color: #fff;
+    padding: 12px;
+}
+
+.modal-close:hover{
+    background-color:#757575;
+    cursor: pointer;
+}
+.modal-body{
+    padding: 16px;
+}
+
+.modal-label{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.modal-input{
+    /* Dung padding de chieu cao thanh 40px */
+    font-size: 15px;
+    border: 1px solid #CCC;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 24px;
+}
+
+#buy-tickets{
+    background-color: #009688;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding:18px;
+}
+
+#buy-tickets:hover{
+    cursor: pointer;
+    background-color: #9b9a9a;
+    color: #000;
+}
+.modal-footer{
+    font-size: 15px;
+    padding: 16px;
+    text-align: right;
+}
+.modal-footer p a {
+    color: #2196F3;
+    text-decoration: none;
+}
