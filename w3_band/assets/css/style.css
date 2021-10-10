@@ -8,6 +8,7 @@
 
 html{
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 .row {
@@ -217,6 +218,10 @@ html{
     font-size: 15px;
 }
 
+.map-section img{
+    width: 100%;
+}
+
 #content{
 
 }
@@ -400,9 +405,31 @@ html{
 
 
 #footer{
+    padding: 64px 16px;
+    text-align: center;
 
 }
 
+#footer .socials-list{  
+    font-size: 24px;
+}
+
+#footer .socials-list a{  
+    text-decoration: none;
+    color: rgba(0,0,0,0.6);
+}
+#footer .socials-list a:hover{  
+    color: rgba(0,0,0,0.3);
+}
+#footer .copyright{
+    margin: 15px 0;
+    color: rgba(0,0,0,0.6);
+}
+
+#footer .copyright a{
+    color: rgba(0,0,0,0.6);
+}
+/* MODAL */
 .modal{
     /* Tao background de hinh thanh lop overlay */
     position: fixed;
